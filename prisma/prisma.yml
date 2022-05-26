@@ -1,0 +1,12 @@
+endpoint: http://172.31.24.195:4466/gotchu/live
+secret: ivEwQ9FnKxN91FaHSxT2
+datamodel: datamodel.prisma
+
+seed:
+  import: seed.graphql
+hooks:
+  post-deploy:
+    - graphql get-schema -p prisma
+generate:
+  - generator: go-client
+    output: ./generated/prisma-client/
